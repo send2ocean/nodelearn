@@ -3,9 +3,9 @@ var app = express()
  
 var wechat = require('wechat');
 var config = {
-  token: 'zdFzDf',
-  appid: 'wx9502bfb962269a40',
-  encodingAESKey: 'hIJ2W8DRq0YneakU5xJLomse9fXxUwvD7pdmXLA7zaE'
+  token: '微信开发者设置  token ',
+  appid: ' you  appid',
+  encodingAESKey: '加密key'
 };
 
 app.use(express.query());
