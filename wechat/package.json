@@ -1,0 +1,15 @@
+{
+  "name": "wechat-learn",
+  "version": "1.0.0",
+  "description": "demo for wechat",
+  "main": "index.js",
+  "scripts": {
+    "test": "test test"
+  },
+  "author": "send2ocean",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "wechat": "^2.0.2"
+  }
+}
