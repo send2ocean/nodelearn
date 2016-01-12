@@ -4,7 +4,8 @@ var http = require('http');
 The only difference between this method and http.request() is*/
 // API DOC BASE 
 // https://nodejs.org/api/http.html
- that it sets the method to GET and calls req.end() automatically.
+//that it sets the method to GET and calls req.end() automatically.
+
 http.get("http://www.baidu.com", function(res) {
   		console.log("Got response: " + res.statusCode);
 	}).on('error', function(e) {
