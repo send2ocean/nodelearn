@@ -16,6 +16,12 @@ router.get('/', function(req, res, next) {
 	});
     
 });
+router.get('/testparm/:surveyid', function(req, res, next) {
+	 console.log("req"+req.params.surveyid);
+	 console.log("req"+req.query.surveyid);
+	 res.send("hehe");
+    
+});
 router.get('/add', function(req, res, next) {
 	var authorID = new mongoose.Types.ObjectId;
 	 var survey = new SurveyPrototype( {
