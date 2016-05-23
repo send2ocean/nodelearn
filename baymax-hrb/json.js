@@ -21,7 +21,7 @@ person = {
     }],
     "procedures": [{
         "ICD_9_CM3": "1",
-        "performancedAt": "2016-06-08 23:53:17"
+        "performancedAt": "2016-06-08 22:53:17"
     }],
     "allergies": [{
         "allergyName": "过敏药物有效成分名称（如磺胺类）或者食物的名称，中英文待定"　
