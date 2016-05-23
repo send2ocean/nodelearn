@@ -2,7 +2,7 @@
 
 module.exports = {
     MONGOOSE: {
-        URI: 'mongodb://10.180.2.79:27017/healthlinkDemo',
+        URI: 'mongodb://localhost:27017/healthlinkDemo',
         OPTIONS: {
             server: {
                 poolSize: 5,

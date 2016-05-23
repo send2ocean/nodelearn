@@ -32,17 +32,17 @@ module.exports = function (router, Auth, Mango, _, $) {
             controller.getPrototype
         ]);
 
-    router.route('/surveys')
+    router.route('/survey/instance')
         .post([
             Auth.needA(['doctor', 'patient', 'rep']),
-            controller.createSurvey
+            controller.createSurveyInstance
         ])
         .get([
             Auth.needA(['patient', 'doctor']),
-            controller.listInstanceByUser
+            controller.getInstances
         ]);
 
-    router.route('/surveys/:surveyId')
+    router.route('/survey/instance/:surveyId')
         .get([
             Auth.needA(['doctor', 'patient', 'rep']),
             controller.getInstance

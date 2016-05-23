@@ -1,0 +1,15 @@
+//PS:GET=获取，查询 POST＝新增 DELETE＝删除  PUT＝更新            
+患者档案 
+ /persons/{id} 
+GET  /persons/{id} 获取患者档案 
+POST /persons      新增患者档案 
+DELETE  /persons/{id} 删除患者档案
+PUT  /persons/{id} 更新患者档案
+－病史
+/conditions
+GET  /persons/{id}/conditions
+POST /persons/{id}/conditions
+DELETE /persons/{id}/conditions/{condition_id}
+PUT /persons/{id}/conditions/{condition_id}
+
+	

@@ -52,6 +52,16 @@ module.exports = function (_, $, Mango) {
                 next();
             });
         },
+        createSurveyInstance: function (req, res, next) {
+            var survey = new Survey(req.body);
+            survey.save(function (err) {
+                if (err) {
+                    return next(['MongoSaveError', err]);
+                }
+                res.healthLinkResult = survey;
+                next();
+            });
+        },
         createSurvey: function (req, res, next) {
             var surveyBody = _.extend(req.body, {participant: req.user._id});
             $.waterfall([
@@ -142,36 +152,21 @@ module.exports = function (_, $, Mango) {
             ], next);
         },
         listPrototypes: function (req, res, next) {
-            $.waterfall([
-                function (fn) {
-                    var options = {};
-                    options[req.user.role+'Visible'] = true;
-                    SurveyPrototype.find(options).exec(fn);
-                },
-                function (prototypes, fn) {
-                    getOnesAnswers(req.user._id, function (err, instances) {
-                        var undo = [];
-                        _.forEach(prototypes, function (prototype) {
-                            var found = false;
-                            _.forEach(instances, function (instance) {
-                                if (instance.prototypeId._id.toString() === prototype._id.toString()) {
-                                    found = true;
-                                }
-                            });
-                            if (!found) {
-                                undo.push(prototype);
-                            }
-                        });
-                        fn(err, undo);
-                    });
-                }
-            ], function (err, results) {
-                if (err) {
-                    return next(err);
-                }
-                res.healthLinkResult = results;
-                next();
-            });
+            SurveyPrototype
+                .find({})
+                //.populate('question')
+                .exec(function (err, questions) {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (!questions) {
+                        return next(new Error('Questions not found'));
+                    }
+
+                    res.healthLinkResult = questions;
+                    next();
+                });
+             
         },
         listInstanceByUser: function (req, res, next) {
             getOnesAnswers(req.user._id, function (err, answers) {
@@ -182,10 +177,11 @@ module.exports = function (_, $, Mango) {
                 next();
             });
         },
-        getInstance: function (req, res, next) {
+        getInstances: function (req, res, next) {
             Survey
-                .findById(req.params.surveyId)
+                .find({})
                 .populate('prototypeId')
+                .populate('questions')
                 .exec(function (err, survey) {
                     if (err) {
                         return next(err);
@@ -193,16 +189,24 @@ module.exports = function (_, $, Mango) {
                     if (!survey) {
                         return next(new Error('Survey not found'));
                     }
-
-                    survey
-                        .prototypeId
-                        .populate('questions', function (err) {
-                            if (err) {
-                                return next(err);
-                            }
-                            res.healthLinkResult = survey;
-                            next();
-                        });
+                    res.healthLinkResult = survey;
+                    next();
+                });
+        },
+         getInstance: function (req, res, next) {
+            Survey
+                .findById(req.params.surveyId)
+                .populate('prototypeId')
+                .populate('questions')
+                .exec(function (err, survey) {
+                    if (err) {
+                        return next(err);
+                    }
+                    if (!survey) {
+                        return next(new Error('Survey not found'));
+                    }
+                    res.healthLinkResult = survey;
+                    next();
                 });
         },
         getQuestions: function (req, res, next) {

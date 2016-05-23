@@ -12,7 +12,7 @@ var express     = require('express'),
     ],
     publicDir   = path.join(__dirname, '../client'),
     api         = express(),
-    app         = express();
+    app         = module.exports = express();
 
 
 
@@ -45,12 +45,25 @@ Utils._.forEach(apiSerivces, function (service) {
 /**************************************************************/
 /************************* Boot Up ****************************/
 /**************************************************************/
+//CORS middleware
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+};
+
+app.use(allowCrossDomain);
+
 app.use('/api/v1', api);
 Utils.Router.endUpAbove();
 
+ 
+
+Utils.Socket.appendTo(app);
+
 var port = process.env.NODE_ENV === 'development' ? 3000 : 4000;
-app.listen(3000, function () {
-  console.log('Server app listening on port %s!',port);
+Utils.Socket.listen(port, '127.0.0.1', function () {
+    console.log('HealthLink Server listens on ' + port);
 });
-
-

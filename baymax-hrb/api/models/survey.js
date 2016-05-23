@@ -1,35 +1,18 @@
 'use strict';
-
+ 
 /**
  * Definition of Survey and related Models and Schemas
  */
-module.exports = function (Mango, mongoose, Schema, _, $, queryBuilder) {
-
-    var HealthMetaData = Mango.HealthMetaData;
-
-
+module.exports = function (Mongo,mongoose,Schema) {
+     
     function existAttrName(value, cb) {
-        HealthMetaData.modernQuery({
-            properties: {
-                dataName: {equals: value}
-            }
-        }, function (err, metaData) {
-            if (err) {
-                return cb(err);
-            }
-            if (!metaData || metaData.length === 0) {
-                return cb(new Error('attrName not found'));
-            }
-            cb(true);
-        });
+        cb(true);
     }
 
     function onlyExistWhenAnswerTypeIs(type) {
         return function (value) {
-            if (_.isArray(value) && _.isEmpty(value)) {
-                return true;
-            }
-            return type === this.answerType;
+             
+            return true;
         };
     }
 
@@ -208,19 +191,14 @@ module.exports = function (Mango, mongoose, Schema, _, $, queryBuilder) {
         }
     });
 
-    questionSchema.statics.modernQuery = queryBuilder();
-    surveyPrototypeSchema.statics.modernQuery = queryBuilder();
-    surveySchema.statics.modernQuery = queryBuilder();
-
+    
     var Question = mongoose.model('SurveyQuestion', questionSchema);
     var SurveyPrototype = mongoose.model('SurveyPrototype', surveyPrototypeSchema);
     var Survey = mongoose.model('Survey', surveySchema);
+ 
 
-    Question.modernQuery(Question);
-    SurveyPrototype.modernQuery(SurveyPrototype);
-    Survey.modernQuery(Survey);
-
-    Mango.Question = Question;
-    Mango.SurveyPrototype = SurveyPrototype;
-    Mango.Survey = Survey;
+    Mongo.Question = Question;
+    Mongo.SurveyPrototype = SurveyPrototype;
+    Mongo.Survey = Survey;
+    
 };

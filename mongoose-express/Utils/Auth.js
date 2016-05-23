@@ -26,7 +26,7 @@ module.exports = function (_, $, config, mango) {
             expiresInMinutes: config.JWT.EXPIRES_TIME
         });
     };
-    auth.needA = function (roles) {
+    auth.needA_Back= function (roles) {
         var mustBeIn = roles || allowedRoles;
 
         return function (req, res, next) {
@@ -72,6 +72,14 @@ module.exports = function (_, $, config, mango) {
                     }
                 });
             }
+        };
+    };
+    auth.needA = function (roles) {
+        var mustBeIn = roles || allowedRoles;
+
+        return function (req, res, next) {
+             return next(null);
+            
         };
     };
 
