@@ -4,7 +4,8 @@
   "description": "learn",
   "main": "file.js",
   "dependencies": {
-    "mongodb": "^2.1.8"
+    "mongodb": "^2.1.8",
+    "node-xlsx": "^0.7.1"
   },
   "devDependencies": {},
   "scripts": {
