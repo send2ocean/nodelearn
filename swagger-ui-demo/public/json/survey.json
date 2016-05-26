@@ -1,0 +1,621 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "PreBaymax API (Simple)",
+        "description": "A sample API that used for PreBaymax Server",
+        "termsOfService": "http://helloreverb.com/terms/",
+        "contact": {
+            "name": "PreBaymax API team",
+            "email": "preBaymax@gmail.com",
+            "url": "http://preBaymax.io"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:8000",
+    "basePath": "/api/v1",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/surveyPrototype": {
+            "get": {
+                "description": "Returns all surveyPrototypes from the server that the user owned",
+                "operationId": "findSurveyPrototypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "user id",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Prototype"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return an array of surveyPrototype",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/surveyPrototype"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new surveyPrototype in the Server.",
+                "operationId": "addSurveyPrototype",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "surveyPrototype",
+                        "in": "body",
+                        "description": "surveyPrototype to add to the Server",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/surveyPrototype"
+                        }
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Prototype"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyPrototype response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyPrototype"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/surveyPrototypes/{id}": {
+            "get": {
+                "description": "Returns a surveyPrototype based on a single ID",
+                "operationId": "findSurveyPrototypeById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyPrototype to fetch",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Prototype"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyPrototype response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyPrototype"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "deletes a single surveyPrototype based on the ID supplied",
+                "operationId": "deleteSurveyPrototype",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyPrototype to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Prototype"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "surveyPrototype deleted"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/surveyQuestion": {
+            "get": {
+                "description": "Returns all surveyQuestion from the server that the user owned",
+                "operationId": "findSurveyQuestions",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "user id",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Questions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return an array of surveyQuestion",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/surveyQuestion"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new surveyQuestion in the Server.",
+                "operationId": "addSurveyQuestion",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "surveyQuestion",
+                        "in": "body",
+                        "description": "surveyQuestion to add to the Server",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/surveyQuestion"
+                        }
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Questions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyQuestion response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyQuestion"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/surveyQuestions/{id}": {
+            "get": {
+                "description": "Returns a surveyQuestion based on a single ID",
+                "operationId": "findSurveyQuestionById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyQuestion to fetch",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Questions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyQuestion response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyQuestion"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "deletes a single surveyQuestion based on the ID supplied",
+                "operationId": "deleteSurveyQuestion",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyQuestion to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Questions"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "surveyQuestion deleted"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/surveyInstance": {
+            "get": {
+                "description": "Returns all surveyInstance from the server that the user owned",
+                "operationId": "findSurveyInstances",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "user id",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "maximum number of results to return",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Instance"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return an array of surveyInstance",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/surveyInstance"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Creates a new surveyInstance in the Server.",
+                "operationId": "addSurveyInstance",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "surveyInstance",
+                        "in": "body",
+                        "description": "surveyInstance to add to the Server",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/surveyInstance"
+                        }
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Instance"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyInstance response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyInstance"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/surveyInstances/{id}": {
+            "get": {
+                "description": "Returns a surveyInstance based on a single ID",
+                "operationId": "findSurveyInstanceById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyInstance to fetch",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Instance"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "surveyInstance response",
+                        "schema": {
+                            "$ref": "#/definitions/surveyInstance"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "deletes a single surveyInstance based on the ID supplied",
+                "operationId": "deleteSurveyInstance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of surveyInstance to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "tags": [
+                    "survey",
+                    "Instance"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "surveyInstance deleted"
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/errorModel"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "surveyPrototype": {
+            "type": "object",
+            "required": [
+                "id",
+                "title",
+                "description"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                },
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/surveyQuestion"
+                    }
+                },
+                "state": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "surveyQuestion": {
+            "type": "object",
+            "required": [
+                "id",
+                "question",
+                "note",
+                "answerType"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "question": {
+                    "type": "string"
+                },
+                "note": {
+                    "type": "string"
+                },
+                "attrName": {
+                    "type": "string"
+                },
+                "answerType": {
+                    "type": "string"
+                },
+                "options": {
+                    "type": "string"
+                },
+                "default": {
+                    "type": "string"
+                },
+                "min": {
+                    "type": "string"
+                },
+                "max": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "owner": {
+                    "type": "string"
+                }
+            }
+        },
+        "surveyInstance": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "prototypeId": {
+                    "type": "string"
+                },
+                "beginAt": {
+                    "type": "string"
+                },
+                "completedAt": {
+                    "type": "string"
+                },
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/surveyQuestion"
+                    }
+                },
+                "answers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "errorModel": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
