@@ -1,0 +1,48 @@
+{
+    "name" : "英树峰",
+    "staticProfile" : {
+        "birthDate" : "1979-02-19T21:38:19Z",
+        "isPremature" : "",
+        "sex" : "Male",
+        "bloodType" : "A"
+    },
+    "history" : [ 
+        {
+            "id" : "1",
+            "cured" : true,
+            "since" : "2015-11-19T07:38:20Z",
+            "curedAt" : "2015-11-26T07:45:20Z"
+        }
+    ],
+    "procedures" : [],
+    "allergies" : {
+        "allergyName" : []
+    },
+    "symptoms" : [ 
+        {
+            "name" : "头晕",
+            "beganAt" : "2015-11-19T07:38:20Z",
+            "endedAt" : "2015-11-26T07:45:20Z"
+        }
+    ],
+    "familyHistory" : [ 
+        "1"
+    ],
+    "treatments" : [ 
+        {
+            "type" : "药物",
+            "drugID" : [ 
+                "Male", 
+                "2"
+            ],
+            "beganAt" : "2015-11-19T07:38:20Z",
+            "endedAt" : "2015-11-26T07:45:20Z"
+        }
+    ],
+    "conditions" : {
+        "heigh" : {
+            "value" : 180,
+            "recordedAt" : "2016-06-01T21:59:20Z"
+        }
+    }
+}

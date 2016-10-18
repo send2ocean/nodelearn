@@ -2,16 +2,16 @@
 
 var colors = require('colors');
 
-function setUpHealthLinkError(_) {
+function setUpPreBayMaxError(_) {
 
-    var HealthLinkError = {};
+    var PreBayMaxError = {};
 
     /**
      * Error Generator based on mongoose save function
      * @param {Object} err from mongoose save function
      * @constructor
      */
-    HealthLinkError.MongoSaveError = function (err) {
+    PreBayMaxError.MongoSaveError = function (err) {
         this.name = 'Entity Save Error';
         this.stack = (new Error()).stack;
         this.messages = [];
@@ -42,21 +42,21 @@ function setUpHealthLinkError(_) {
      * @param messages
      * @constructor
      */
-    HealthLinkError.ParamsError = function (messages) {
+    PreBayMaxError.ParamsError = function (messages) {
         this.name = 'Params Error';
         this.stack = (new Error()).stack;
         this.messages = messages;
         this.code = 403;
     };
 
-    HealthLinkError.QueryError = function (errFromQuery) {
+    PreBayMaxError.QueryError = function (errFromQuery) {
         this.name = 'Query Error';
         this.stack = (new Error()).stack;
         this.messages = errFromQuery;
         this.code = 403;
     };
 
-    HealthLinkError.RemoveError = function (errFromRemove) {
+    PreBayMaxError.RemoveError = function (errFromRemove) {
         this.name = 'Deletion Error';
         this.stack = (new Error()).stack;
         this.messages = errFromRemove;
@@ -68,14 +68,14 @@ function setUpHealthLinkError(_) {
      * @param {String} message
      * @constructor
      */
-    HealthLinkError.StandardError = function (message) {
+    PreBayMaxError.StandardError = function (message) {
         this.name = 'Bad Request';
         this.stack = (new Error()).stack;
         this.messages = message;
         this.code = 403;
     };
 
-    HealthLinkError.ExpandError = function (errorFromExpand) {
+    PreBayMaxError.ExpandError = function (errorFromExpand) {
         this.name = 'Expand Error';
         this.stack = (new Error()).stack;
         this.messages = errorFromExpand;
@@ -87,7 +87,7 @@ function setUpHealthLinkError(_) {
      * @param messages
      * @constructor
      */
-    HealthLinkError.AuthError = function (messages) {
+    PreBayMaxError.AuthError = function (messages) {
         this.name = 'Authentication Error';
         this.stack = (new Error()).stack;
         this.messages = messages;
@@ -105,11 +105,11 @@ function setUpHealthLinkError(_) {
         };
     };
 
-    _.forOwn(HealthLinkError, function (value, key) {
-        HealthLinkError[key].prototype = Error.prototype;
+    _.forOwn(PreBayMaxError, function (value, key) {
+        PreBayMaxError[key].prototype = Error.prototype;
     });
 
-    return HealthLinkError;
+    return PreBayMaxError;
 }
 
 function printErrorRequest(req, error) {
@@ -138,7 +138,7 @@ function printErrorRequest(req, error) {
 module.exports = function (_, $, app) {
 
     var router = {
-        HealthLinkError: setUpHealthLinkError(_)
+        PreBayMaxError: setUpPreBayMaxError(_)
     };
 
     router.endUpAbove = function () {
@@ -156,22 +156,22 @@ module.exports = function (_, $, app) {
                     }
                     errName = err[0];
                     errMessage = err[1];
-                    HandlerFunc = router.HealthLinkError[errName];
+                    HandlerFunc = router.PreBayMaxError[errName];
                     if (!HandlerFunc) {
                         throw new Error('You error type has not been support yet');
                     }
                     error = new HandlerFunc(errMessage);
                 } else {
-                    HandlerFunc = router.HealthLinkError.StandardError;
+                    HandlerFunc = router.PreBayMaxError.StandardError;
                     error = new HandlerFunc(err.message);
                 }
-                res.healthLinkError = error.toJSON();
+                res.PreBayMaxError = error.toJSON();
             }
             next();
         });
         app.use(function (req, res) {
-            var error   = res.healthLinkError,
-                results = res.healthLinkResult;
+            var error   = res.PreBayMaxError,
+                results = res.PreBayMaxResult;
             if (error) {
                 if (process.env.NODE_ENV !== 'test') {
                     printErrorRequest(req, error);
@@ -183,7 +183,7 @@ module.exports = function (_, $, app) {
             }
 
             res.status(404).json({
-                'health-link-want-to-tell-you': 'Your request has not been built yet :)'
+                'bayMax': 'Your request has not been built yet :)'
             });
         });
     };

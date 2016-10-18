@@ -65,5 +65,5 @@ Utils.Socket.appendTo(app);
 
 var port = process.env.NODE_ENV === 'development' ? 3000 : 4000;
 Utils.Socket.listen(port, '127.0.0.1', function () {
-    console.log('HealthLink Server listens on ' + port);
+    console.log('PreBaymax Server listens on ' + port);
 });

@@ -34,7 +34,7 @@ module.exports = function (_, $, Mango) {
                 if (err) {
                     return next(['MongoSaveError', err]);
                 }
-                res.healthLinkResult = question;
+                res.PreBayMaxResult = question;
                 next();
             });
         },
@@ -48,7 +48,7 @@ module.exports = function (_, $, Mango) {
                 if (err) {
                     return next(['MongoSaveError', err]);
                 }
-                res.healthLinkResult = surveyPrototype;
+                res.PreBayMaxResult = surveyPrototype;
                 next();
             });
         },
@@ -58,7 +58,7 @@ module.exports = function (_, $, Mango) {
                 if (err) {
                     return next(['MongoSaveError', err]);
                 }
-                res.healthLinkResult = survey;
+                res.PreBayMaxResult = survey;
                 next();
             });
         },
@@ -145,7 +145,7 @@ module.exports = function (_, $, Mango) {
                         if (err) {
                             return cb(['MongoSaveError', err]);
                         }
-                        res.healthLinkResult = survey;
+                        res.PreBayMaxResult = survey;
                         cb();
                     });
                 }
@@ -163,7 +163,7 @@ module.exports = function (_, $, Mango) {
                         return next(new Error('Questions not found'));
                     }
 
-                    res.healthLinkResult = questions;
+                    res.PreBayMaxResult = questions;
                     next();
                 });
              
@@ -173,7 +173,7 @@ module.exports = function (_, $, Mango) {
                 if (err) {
                     return next(err);
                 }
-                res.healthLinkResult = answers;
+                res.PreBayMaxResult = answers;
                 next();
             });
         },
@@ -189,7 +189,7 @@ module.exports = function (_, $, Mango) {
                     if (!survey) {
                         return next(new Error('Survey not found'));
                     }
-                    res.healthLinkResult = survey;
+                    res.PreBayMaxResult = survey;
                     next();
                 });
         },
@@ -205,7 +205,7 @@ module.exports = function (_, $, Mango) {
                     if (!survey) {
                         return next(new Error('Survey not found'));
                     }
-                    res.healthLinkResult = survey;
+                    res.PreBayMaxResult = survey;
                     next();
                 });
         },
@@ -221,7 +221,7 @@ module.exports = function (_, $, Mango) {
                         return next(new Error('Questions not found'));
                     }
 
-                    res.healthLinkResult = questions;
+                    res.PreBayMaxResult = questions;
                     next();
                 });
         },
@@ -236,7 +236,7 @@ module.exports = function (_, $, Mango) {
                     if (!prototype) {
                         return next(new Error('Survey prototype not found'));
                     }
-                    res.healthLinkResult = prototype;
+                    res.PreBayMaxResult = prototype;
                     next();
                 });
         }
