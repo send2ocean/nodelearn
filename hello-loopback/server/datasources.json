@@ -1,0 +1,26 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mySQL": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "url": "mysql://test:abc123@127.0.0.1/testDb",
+    "database": "testDb",
+    "password": "abc123",
+    "name": "mySQL",
+    "user": "test",
+    "connector": "mysql"
+  },
+  "mongodb_vm": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "url": "",
+    "database": "loopback_demo",
+    "password": "",
+    "name": "mongodb_vm",
+    "user": "",
+    "connector": "mongodb"
+  }
+}
