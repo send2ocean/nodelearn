@@ -36,6 +36,8 @@
       "foreignKey": ""
     }
   },
-  "acls": [],
+  "acls": [
+
+  ],
   "methods": {}
 }
