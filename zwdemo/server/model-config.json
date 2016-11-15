@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "mongoDbs",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "mongoDbs",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "mongoDbs",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongoDbs",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "Message": {
+    "dataSource": null
+  },
+  "account": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "org": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "gpsinfo": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "areas": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "soOrder": {
+    "dataSource": "mongoDbs",
+    "public": true
+  },
+  "frmOrder": {
+    "dataSource": "mongoDbs",
+    "public": true
+  }
+}

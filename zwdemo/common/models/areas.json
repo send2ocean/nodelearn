@@ -1,0 +1,23 @@
+{
+  "name": "areas",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "areaName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "orgs": {
+      "type": "hasMany",
+      "model": "org",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

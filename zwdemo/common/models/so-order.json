@@ -1,0 +1,28 @@
+{
+  "name": "soOrder",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "soName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accounts": {
+      "type": "hasOne",
+      "model": "account",
+      "foreignKey": ""
+    },
+    "org": {
+      "type": "belongsTo",
+      "model": "org",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

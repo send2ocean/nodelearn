@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongoDbs": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "url": "",
+    "database": "zwdemo",
+    "password": "",
+    "name": "mongoDbs",
+    "user": "",
+    "connector": "mongodb"
+  }
+}

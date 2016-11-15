@@ -1,0 +1,33 @@
+{
+  "name": "org",
+  "plural": "orgs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "pid": {
+      "type": "string",
+      "required": true,
+      "default": "0"
+    },
+    "desc": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "areas": {
+      "type": "hasMany",
+      "model": "areas",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
