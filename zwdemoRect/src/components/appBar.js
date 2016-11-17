@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import Menu from 'material-ui/Menu';
- 
+
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import ContentLink from 'material-ui/svg-icons/content/link';
@@ -56,19 +56,19 @@ class Home extends React.Component {
   }
 
   handleToggled(e){
-  	 
-    
+
+
   	console.log('toggled')
   	this.setState({open: !this.state.open});
-  }  
+  }
   xyz(event){
     console.log('xyz')
   }
-  
+
 
   render() {
     return (
-    	
+
 	     <div>
 	       <AppBar
 				    title={<span style={styles.title}>IWork</span>}
@@ -76,18 +76,18 @@ class Home extends React.Component {
 				    iconElementLeft={<IconButton  ><NavigationMenu /></IconButton>}
 				    iconElementRight={<Logged />}
   				/>
-	        
+
 	        <Drawer width={200}   open={this.state.open} >
-	          <AppBar title="Menus" 
-	          onLeftIconButtonTouchTap={this.handleToggled} 
+	          <AppBar title="Menus"
+	          onLeftIconButtonTouchTap={this.handleToggled}
 	          iconElementLeft={<IconButton ><NavigationClose /></IconButton>}
-	          
+
 	          />
           	<Menu onItemTouchTap={this.handleToggled} >
 
-              <MenuItem primaryText="Login" leftIcon={<RemoveRedEye />}  containerElement={<Link to="/login" />} /> 
-              <MenuItem primaryText="FRM" leftIcon={<PersonAdd />} containerElement={<Link to="/table" />}   />
-              <MenuItem primaryText="Get links" leftIcon={<ContentLink />} />
+              <MenuItem primaryText="Login" leftIcon={<RemoveRedEye />}  containerElement={<Link to="/login" />} />
+              <MenuItem primaryText="FRM" leftIcon={<PersonAdd />} containerElement={<Link to="/frm" />}   />
+              <MenuItem primaryText="Get Tables" leftIcon={<ContentLink />} containerElement={<Link to="/table" />}/>
               <Divider />
               <MenuItem primaryText="Make a copy" leftIcon={<ContentCopy />} />
               <MenuItem primaryText="Download" leftIcon={<Download />} />
@@ -97,7 +97,7 @@ class Home extends React.Component {
 	        </Drawer>
           {this.props.children}
 	      </div>
-	     
+
     );
   }
 
