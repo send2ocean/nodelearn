@@ -89,7 +89,7 @@ class Home extends React.Component {
               <MenuItem primaryText="FRM" leftIcon={<PersonAdd />} containerElement={<Link to="/frm" />}   />
               <MenuItem primaryText="Get Tables" leftIcon={<ContentLink />} containerElement={<Link to="/table" />}/>
               <Divider />
-              <MenuItem primaryText="Make a copy" leftIcon={<ContentCopy />} />
+              <MenuItem primaryText="Google Map" leftIcon={<ContentCopy />} containerElement={<Link to="/gmap" />}/>
               <MenuItem primaryText="Download" leftIcon={<Download />} />
               <Divider />
               <MenuItem primaryText="Remove" leftIcon={<Delete />}  onTouchTap = { this.xyz}/>

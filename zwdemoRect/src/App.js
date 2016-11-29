@@ -15,6 +15,7 @@ import Home from './components/appBar.js'
 import TableSimple from './components/tablesimple.js'
 import NoMatch from './components/nomatch.js'
 import Frm from './components/frm'
+import GMap from './components/googlemap'
 
 const loggerMiddleware = createLogger()
 let store = createStore(
@@ -44,10 +45,11 @@ class App extends Component {
       <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={Home}>
-          <IndexRoute component={TableSimple} />
+          <IndexRoute component={GMap} />
           <Route path="/login" component={LogIn}/>
           <Route path="/table" component={TableSimple}/>
           <Route path="/frm" component={Frm}/>
+          <Route path="/gmap" component={GMap}/>
           <Route path="*" component={NoMatch}/>
         </Route>
       </Router>

@@ -4,13 +4,13 @@
     "connector": "memory"
   },
   "mongoDbs": {
-    "host": "127.0.0.1",
-    "port": 27017,
+    "host": "133.130.117.173",
+    "port": 28018,
     "url": "",
-    "database": "zwdemo",
-    "password": "",
+    "database": "iwork",
+    "password": "xyziwok123",
     "name": "mongoDbs",
-    "user": "",
+    "user": "iwork",
     "connector": "mongodb"
-  }
+  } 
 }
